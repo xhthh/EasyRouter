@@ -68,7 +68,7 @@ public class EasyRouter {
         Set<String> routerMap = ClassUtils.getFileNameByPackageName(mContext, ROUTE_ROOT_PAKCAGE);
         for (String className : routerMap) {
             if (className.startsWith(ROUTE_ROOT_PAKCAGE + "." + SDK_NAME + SEPARATOR + SUFFIX_ROOT)) {
-                ((IRouteRoot) Class.forName(className).getConstructor().newInstance()).loadInfo(Warehouse.groupsIndex);
+                ((IRouteRoot) Class.forName(className).getConstructor().newInstance()).loadInto(Warehouse.groupsIndex);
             }
         }
 

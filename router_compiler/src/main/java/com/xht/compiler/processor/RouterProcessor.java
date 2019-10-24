@@ -227,6 +227,7 @@ public class RouterProcessor extends AbstractProcessor {
                 e.printStackTrace();
             }
             rootMap.put(groupName, groupClassName);
+
         }
     }
 
