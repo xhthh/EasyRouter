@@ -135,6 +135,9 @@ public class RouterProcessor extends AbstractProcessor {
             }
             categories(routeMeta);
         }
+
+        //todo 疑问，为什么只编写 注解和注解编译器，不能生成Java文件，这里 getTypeElement() 获取到的 element 为 null
+        //todo Constant.IROUTE_GROUP 为 router_api 库中的 接口文件
         TypeElement iRouteGroup = elementUtils.getTypeElement(Constant.IROUTE_GROUP);
         TypeElement iRouteRoot = elementUtils.getTypeElement(Constant.IROUTE_ROOT);
 
