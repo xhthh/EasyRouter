@@ -1,5 +1,6 @@
 package com.xht.api;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -7,6 +8,7 @@ import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityOptionsCompat;
 
 import com.xht.annotations.model.RouteMeta;
+import com.xht.api.callback.NavigationCallback;
 
 /**
  * Created by xht on 2019/10/23.
@@ -96,5 +98,27 @@ public class Postcard extends RouteMeta {
     public Postcard withAction(String action) {
         this.action = action;
         return this;
+    }
+
+
+    public Object navigation() {
+        return EasyRouter.getInstance().navigation(null, this, -1, null);
+    }
+
+    public Object navigation(Context context) {
+        return EasyRouter.getInstance().navigation(context, this, -1, null);
+    }
+
+
+    public Object navigation(Context context, NavigationCallback callback) {
+        return EasyRouter.getInstance().navigation(context, this, -1, callback);
+    }
+
+    public Object navigation(Context context, int requestCode) {
+        return EasyRouter.getInstance().navigation(context, this, requestCode, null);
+    }
+
+    public Object navigation(Context context, int requestCode, NavigationCallback callback) {
+        return EasyRouter.getInstance().navigation(context, this, requestCode, callback);
     }
 }

@@ -5,13 +5,12 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".Module1MainActivity">
 
-    <Button
-        android:id="@+id/btn_1"
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="跳转 module1 主页面"
-        android:textAllCaps="false" />
+        android:text="我是module1"
+        android:textSize="16sp" />
 
 </LinearLayout>

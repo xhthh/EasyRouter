@@ -1,35 +1,30 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
+
+
     defaultConfig {
-        applicationId "com.xht.easyrouter"
         minSdkVersion 15
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [moduleName: project.getName()]
-            }
-        }
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     implementation 'androidx.appcompat:appcompat:1.1.0'
 
-    annotationProcessor project(':router_compiler')
-    implementation project(':base')
-
-    runtimeOnly project(':module1')
+    api project(':router_api')
 }

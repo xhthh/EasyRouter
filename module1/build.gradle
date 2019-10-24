@@ -1,10 +1,18 @@
-apply plugin: 'com.android.application'
+if(isRunAlone.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
 
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
+
+
     defaultConfig {
-        applicationId "com.xht.easyrouter"
+        if(isRunAlone.toBoolean()){
+            applicationId "com.xht.module1"
+        }
         minSdkVersion 15
         targetSdkVersion 29
         versionCode 1
@@ -12,24 +20,35 @@ android {
 
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [moduleName: project.getName()]
+                arguments = [ moduleName : project.getName() ]
             }
         }
     }
+
+    sourceSets {
+        main {
+            if (isRunAlone.toBoolean()) {
+                manifest.srcFile 'src/main/manifest/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     implementation 'androidx.appcompat:appcompat:1.1.0'
 
     annotationProcessor project(':router_compiler')
     implementation project(':base')
-
-    runtimeOnly project(':module1')
 }
